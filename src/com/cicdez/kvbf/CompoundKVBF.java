@@ -59,7 +59,7 @@ public class CompoundKVBF extends AbstractAccountedKVBF<Map<String, IKVBF<?>>> {
     public void putList(String key, ListKVBF list) throws KVBFException {
         put(key, list);
     }
-    public void putTypedList(String key, TypedListKVBS typedList) throws KVBFException {
+    public void putTypedList(String key, TypedListKVBF typedList) throws KVBFException {
         put(key, typedList);
     }
 
@@ -116,10 +116,14 @@ public class CompoundKVBF extends AbstractAccountedKVBF<Map<String, IKVBF<?>>> {
         if (ikvbf instanceof ListKVBF) return (ListKVBF) ikvbf;
         else throw new KVBFException("No such list '" + key + "'");
     }
-    public TypedListKVBS getTypedList(String key) throws KVBFException {
+    public TypedListKVBF getTypedList(String key) throws KVBFException {
         IKVBF<?> ikvbf = get(key);
-        if (ikvbf instanceof TypedListKVBS) return (TypedListKVBS) ikvbf;
+        if (ikvbf instanceof TypedListKVBF) return (TypedListKVBF) ikvbf;
         else throw new KVBFException("No such list '" + key + "'");
+    }
+
+    public int size() {
+        return map.size();
     }
 
     @Override

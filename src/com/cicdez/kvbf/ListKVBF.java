@@ -51,11 +51,17 @@ public class ListKVBF extends AbstractAccountedKVBF<List<IKVBF<?>>> {
     public void addBoolean(boolean v) {
         add(new BooleanKVBF(v));
     }
+    public void addString(String v) {
+        add(new StringKVBF(v));
+    }
     public void addCompound(CompoundKVBF compound) {
         add(compound);
     }
     public void addList(ListKVBF list) {
         add(list);
+    }
+    public void addTypedList(TypedListKVBF typedList) {
+        add(typedList);
     }
 
     public IKVBF<?> get(int index) {
@@ -109,6 +115,11 @@ public class ListKVBF extends AbstractAccountedKVBF<List<IKVBF<?>>> {
     public ListKVBF getList(int index) throws KVBFException {
         IKVBF<?> ikvbf = get(index);
         if (ikvbf instanceof ListKVBF) return (ListKVBF) ikvbf;
+        else throw new KVBFException("No such list on " + index);
+    }
+    public TypedListKVBF getTypedList(int index) throws KVBFException {
+        IKVBF<?> ikvbf = get(index);
+        if (ikvbf instanceof TypedListKVBF) return (TypedListKVBF) ikvbf;
         else throw new KVBFException("No such list on " + index);
     }
 

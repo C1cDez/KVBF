@@ -28,7 +28,7 @@ public final class KVBFTypes {
             case STRING_TYPE: return new StringKVBF();
             case COMPOUND_TYPE: return new CompoundKVBF();
             case LIST_TYPE: return new ListKVBF();
-            case TYPED_LIST_TYPE: return new TypedListKVBS();
+            case TYPED_LIST_TYPE: return new TypedListKVBF();
 
             default: throw new KVBFException("No such KVBF of type: " + type);
         }
